@@ -182,10 +182,12 @@
              'Content-Type': 'text/plain'
             }
           };
-          
+          window.setTimeout(function() {
+                $http.post(buildUrl(),sentData,config);    
+            }, 4000);
           
           //Ajax call to send data to loggly
-          $http.post(buildUrl(),sentData,config);
+          
         };
 
         var attach = function() {
@@ -295,7 +297,9 @@
             }
 
             //Send the message to through the loggly sender
-            logger.sendMessage( sending );
+            window.setTimeout(function() {
+                logger.sendMessage( sending );    
+            }, 4000);   
           };
 
           wrappedFn.logs = [];
